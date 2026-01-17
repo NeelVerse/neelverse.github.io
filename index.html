@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeelVerse</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1a1a2e, #0a0a0f);
+      color: #eaeaea;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-bottom: 30px;
+    }
+
+    .about {
+      font-size: 1rem;
+      line-height: 1.8;
+      opacity: 0.75;
+      margin-bottom: 40px;
+    }
+
+    .footer {
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to <span>NeelVerse</span></h1>
+
+    <p class="tagline">
+      A universe of ideas, creation, and growth.
+    </p>
+
+    <p class="about">
+      Hi, I’m Neel.  
+      I explore technology, creativity, filmmaking, photography, and the process of building things from scratch.  
+      This space is my journey — learning, experimenting, and evolving.
+    </p>
+
+    <div class="footer">
+      © 2026 Neel • All rights reserved
+    </div>
+  </div>
+</body>
+</html>
