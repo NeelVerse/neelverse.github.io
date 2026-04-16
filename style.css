@@ -1,129 +1,802 @@
-/* =========================
-   CONTACT FORM ONLY
-   ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400&display=swap');
 
-.contact-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 14px 28px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  background: linear-gradient(135deg, #00ffff, #ff00ff);
-  color: black;
-  font-weight: 600;
+:root {
+    --gold: #C5A059;
+    --gold-glow: rgba(197, 160, 89, 0.4);
+    --warm-black: #0F0D0C;
+    --deep-espresso: #1A1614;
+    --accent-amber: #FFBF00;
+    --text-light: #F5EFE6;
+    --glass: rgba(255, 255, 255, 0.02);
 }
 
-/* ===== Global Reset ===== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-color: var(--warm-black);
+    color: var(--text-light);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* ===== Page Wrapper ===== */
-.section {
-  width: 100%;
-  max-width: 520px;
-  padding: 40px;
-  text-align: center;
+/* --- Warm Lightning Background --- */
+.lightning-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, var(--gold-glow) 0%, transparent 70%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
 }
 
-/* ===== Headings ===== */
-.section h1 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
+.aurora-warm {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+    filter: blur(120px);
+    opacity: 0.4;
 }
 
-.section p {
-  opacity: 0.8;
-  margin-bottom: 30px;
-  font-size: 1rem;
+.blob {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+}
+.blob-1 { background: #4a3728; top: -10%; left: -10%; }
+.blob-2 { background: #7a5c3a; bottom: -10%; right: -10%; }
+
+/* --- Typography --- */
+h1, h2, h3, .logo {
+    font-family: 'Cinzel Decorative', cursive;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
-/* ===== Form Glass Card ===== */
-.contact-form {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 30px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; }
+
+/* --- Navigation --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 8%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
 }
 
-/* ===== Inputs ===== */
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  margin-bottom: 18px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-size: 0.95rem;
+.logo {
+    font-size: 1.8rem;
+    color: var(--gold);
+    text-shadow: 0 0 15px var(--gold-glow);
+    text-decoration: none;
 }
 
-.contact-form textarea {
-  min-height: 120px;
-  resize: none;
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 35px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: 0.4s;
+    opacity: 0.7;
 }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--gold);
 }
 
-/* ===== Button ===== */
-.contact-form button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, #00f5ff, #ff00f7);
-  color: #000;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* --- Layout Elements --- */
+.container { padding: 150px 10% 80px; }
+
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.contact-form button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255, 0, 247, 0.4);
+.hero h1 {
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 1;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--gold), #7a5c3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* ===== Back Link ===== */
-.section a {
-  display: inline-block;
-  margin-top: 18px;
-  color: #00f5ff;
-  text-decoration: none;
-  font-size: 0.9rem;
-  opacity: 0.85;
+/* --- Buttons --- */
+.gold-btn {
+    display: inline-block;
+    padding: 18px 45px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 3px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
 }
 
-.section a:hover {
-  opacity: 1;
-  text-decoration: underline;
+.gold-btn:hover {
+    background: var(--gold);
+    color: black;
+    box-shadow: 0 0 40px var(--gold-glow);
 }
 
-/* ===== Mobile Fix ===== */
-@media (max-width: 520px) {
-  .section {
-    padding: 25px;
-  }
+/* --- Work Grid --- */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
 }
 
+.work-item {
+    aspect-ratio: 16/9;
+    background: var(--deep-espresso);
+    border: 1px solid rgba(197, 160, 89, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.work-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.6; transition: 0.8s;
+}
+
+.work-item:hover img { transform: scale(1.1); opacity: 0.9; }
+
+.work-info {
+    position: absolute;
+    bottom: 20px; left: 20px;
+}
+
+/* --- About Styling --- */
+.about-flex {
+    display: flex;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-text { flex: 1; }
+.about-img {
+    flex: 1;
+    border: 1px solid var(--gold);
+    padding: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 60px;
+    border-top: 1px solid rgba(197, 160, 89, 0.1);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Outfit:wght@200;400&display=swap');
+
+:root {
+    --gold: #D4AF37;
+    --gold-bright: #FFD700;
+    --deep-bg: #0A0908;
+    --card-bg: #141210;
+    --text: #EAE0D5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background-color: var(--deep-bg); 
+    color: var(--text); 
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- Film Grain Texture --- */
+.grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* --- Lightning Overlay --- */
+.lightning-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+    opacity: 0; z-index: -1;
+}
+
+/* --- Navigation --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 30px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
+    backdrop-filter: blur(10px); background: rgba(10,9,8,0.8);
+}
+.logo { font-family: 'Cinzel Decorative'; color: var(--gold); text-decoration: none; font-size: 1.5rem; letter-spacing: 3px; }
+.nav-links a { color: var(--text); text-decoration: none; margin-left: 30px; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.6; transition: 0.4s; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+
+/* --- Layout --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+.gold-text { color: var(--gold); }
+.center { text-align: center; }
+
+/* --- Hero --- */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.subtitle { letter-spacing: 10px; font-size: 0.9rem; color: var(--gold); margin-bottom: 15px; }
+.hero h1 { font-family: 'Cinzel Decorative'; font-size: clamp(3rem, 12vw, 8rem); line-height: 1; }
+
+.scroll-indicator { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; letter-spacing: 3px; }
+.scroll-indicator .line { width: 1px; height: 50px; background: var(--gold); margin: 10px auto; animation: grow 2s infinite; }
+
+/* --- Sections --- */
+.section-title { font-family: 'Cinzel Decorative'; font-size: 3rem; margin-bottom: 40px; }
+
+.philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.phil-text p { font-family: 'Cormorant Garamond'; font-size: 1.6rem; line-height: 1.4; opacity: 0.8; margin-bottom: 30px; }
+.text-link { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 5px; }
+
+.phil-image-box { position: relative; height: 500px; }
+.gold-border-box { position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; border: 1px solid var(--gold); z-index: -1; }
+.placeholder-img { width: 100%; height: 100%; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); }
+
+/* --- Services Card --- */
+.service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+.s-card { background: var(--card-bg); padding: 50px 30px; border: 1px solid rgba(212,175,55,0.1); transition: 0.5s; position: relative; }
+.s-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 40px rgba(212,175,55,0.1); }
+.s-num { font-family: 'Cinzel Decorative'; font-size: 0.8rem; color: var(--gold); display: block; margin-bottom: 20px; }
+.s-card h3 { font-family: 'Cinzel Decorative'; margin-bottom: 15px; font-size: 1.2rem; }
+.s-card p { opacity: 0.7; font-size: 0.95rem; }
+
+/* --- Quote Section --- */
+.quote-section { padding: 150px 0; text-align: center; background: rgba(212,175,55,0.02); }
+blockquote { font-family: 'Cormorant Garamond'; font-style: italic; font-size: 3rem; max-width: 900px; margin: 0 auto; line-height: 1.2; }
+
+/* --- Footer --- */
+footer { padding: 80px 8% 40px; border-top: 1px solid rgba(212,175,55,0.1); }
+.footer-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+.footer-links a { color: var(--text); text-decoration: none; margin-left: 30px; font-size: 0.8rem; opacity: 0.6; }
+.footer-bottom { text-align: center; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.4; }
+
+@keyframes grow { 0%, 100% { height: 30px; } 50% { height: 60px; } }
+
+/* --- Hero Background & Image Positioning --- */
+.hero-bg {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center; /* Vertical center */
+    /* Replace 'hero-neel.jpg' with your actual filename */
+    background-image: url('b-neel-photo.jpeg'); 
+    background-size: cover;
+    background-position: 90% center;
+    overflow: hidden;
+}
+
+/* --- The "Dull Yellow" / Aristocratic Filter --- */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient: Dark on the left (for text) to a "Dull Yellow" (Gold) tint on the right */
+    background: linear-gradient(
+        to right, 
+        rgba(10, 9, 8, 0.9) 20%,  /* Deep black-brown on the left */
+        rgba(212, 175, 55, 0.2) 60%, /* Dull Gold/Yellow tint over the image */
+        rgba(10, 9, 8, 0.4) 100%
+    );
+    /* This adds a "sepia-luxury" vibe */
+    backdrop-filter: sepia(30%) contrast(110%);
+    z-index: 1;
+}
+
+/* --- Left Alignment Logic --- */
+.hero-left-align {
+    position: relative;
+    z-index: 2; /* Sits above the overlay */
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Pushes content to the left */
+}
+
+.hero-content {
+    max-width: 600px;
+    text-align: left; /* Aligns text within the box */
+}
+
+.hero-content h1 {
+    font-size: clamp(4rem, 15vw, 9rem);
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+}
+
+.hero-description {
+    font-family: 'Cormorant Garamond';
+    font-size: 1.5rem;
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 10px;
+    max-width: 450px;
+}
+
+/* --- Refined Gold Button for the Image --- */
+.gold-btn {
+    background: rgba(212, 175, 55, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--gold);
+    padding: 15px 35px;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    transition: 0.5s;
+}
+
+.gold-btn:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero-bg {
+        background-position: 70% center; /* Adjusts image so your face stays visible on phones */
+    }
+    .hero-content {
+        padding-top: 50px;
+    }
+}
+
+/* --- MOBILE NAVIGATION SYSTEM --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+    transition: 0.4s;
+}
+
+@media (max-width: 992px) {
+    /* Navbar Changes */
+    .menu-toggle { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hidden off-screen */
+        width: 100%;
+        height: 100vh;
+        background: var(--deep-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 1500;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem; /* Larger links for thumbs */
+        margin: 0;
+    }
+
+    /* Stack Grids */
+    .philosophy-grid, 
+    .journal-grid, 
+    .about-flex {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* Hero adjustments */
+    .hero-bg {
+        background-position: 75% center; /* Keep your face visible */
+    }
+
+    .hero-content {
+        padding: 0 5%;
+        text-align: center; /* Center text on mobile for better balance */
+    }
+
+    .hero-left-align {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin: 20px auto;
+    }
+
+    /* Sections */
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .container {
+        padding: 80px 5%;
+    }
+
+    /* Service Cards */
+    .service-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hamburger Animation */
+.menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* --- Auth Card Styles --- */
+.auth-card {
+    background: rgba(10, 9, 8, 0.7); /* Deep dark glass */
+    backdrop-filter: blur(20px) sepia(20%);
+    padding: 50px 40px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 100%;
+    max-width: 400px;
+    z-index: 10;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.auth-title {
+    font-family: 'Cinzel Decorative';
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.auth-title span {
+    color: var(--gold);
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.auth-form input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 12px 0;
+    color: #fff;
+    font-family: 'Cormorant Garamond';
+    font-size: 1.1rem;
+    outline: none;
+    transition: 0.4s;
+}
+
+.auth-form input:focus {
+    border-bottom-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.auth-footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.auth-footer a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Contact Page Special Styling --- */
+.contact-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 60px;
+    background-image: url('hero-neel.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.contact-glass-card {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(10, 9, 8, 0.85);
+    backdrop-filter: blur(25px) sepia(10%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 60px;
+    z-index: 5;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-desc {
+    font-family: 'Cormorant Garamond';
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.imperial-form select,
+.imperial-form textarea,
+.imperial-form input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 15px 0;
+    color: #fff;
+    font-family: 'Cormorant Garamond';
+    font-size: 1.1rem;
+    outline: none;
+    transition: 0.4s;
+    margin-top: 5px;
+}
+
+.imperial-form select {
+    background: var(--deep-bg);
+    cursor: pointer;
+}
+
+.imperial-form input:focus, 
+.imperial-form textarea:focus {
+    border-bottom-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.contact-socials {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding-top: 30px;
+}
+
+.contact-socials a {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.contact-socials a:hover {
+    opacity: 1;
+    letter-spacing: 4px;
+}
+
+/* Mobile Fix for Form */
+@media (max-width: 768px) {
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .contact-glass-card { padding: 40px 20px; }
+    .contact-wrapper { padding-top: 100px; }
+}
+
+/* --- Acclaim Grid --- */
+.acclaim-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    margin-top: 50px;
+}
+.acclaim-card {
+    border-left: 1px solid var(--gold);
+    padding: 20px 40px;
+    background: linear-gradient(to right, rgba(212,175,55,0.05), transparent);
+}
+.quote {
+    font-family: 'Cormorant Garamond';
+    font-size: 2rem;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.author {
+    font-family: 'Cinzel Decorative';
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+
+/* --- Manifesto Styling --- */
+.manifesto-container { max-width: 800px; text-align: justify; }
+.manifesto-content p {
+    font-family: 'Cormorant Garamond';
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+.dropcap {
+    float: left;
+    font-family: 'Cinzel Decorative';
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--gold);
+    margin-right: 20px;
+}
+.gold-divider {
+    width: 100px;
+    height: 1px;
+    background: var(--gold);
+    margin: 60px auto;
+}
+
+/* --- Process Timeline --- */
+.process-timeline {
+    margin-top: 60px;
+    border-left: 1px solid rgba(212, 175, 55, 0.2);
+    padding-left: 40px;
+}
+.step { margin-bottom: 80px; position: relative; }
+.step-num {
+    position: absolute; left: -57px; top: 0;
+    background: var(--deep-bg);
+    color: var(--gold);
+    font-family: 'Cinzel Decorative';
+    font-size: 0.9rem;
+    padding: 5px;
+}
+.step h3 { font-family: 'Cinzel Decorative'; margin-bottom: 15px; }
+.step p { font-family: 'Cormorant Garamond'; font-size: 1.4rem; max-width: 700px; opacity: 0.8; }
+
+/* --- Journal Grid --- */
+.journal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 60px;
+}
+.journal-entry {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    padding-bottom: 30px;
+}
+.journal-entry .date { font-size: 0.7rem; color: var(--gold); letter-spacing: 3px; }
+.journal-entry h3 { margin: 15px 0; font-family: 'Cinzel Decorative'; }
+.journal-entry .read-more {
+    font-size: 0.7rem; letter-spacing: 2px; color: var(--gold);
+    text-decoration: none; border-bottom: 1px solid var(--gold);
+}
+
+/* --- Vault Override --- */
+.center { text-align: center; }
+
+/* --- Navigation Refinement --- */
+.nav-login-btn {
+    border: 1px solid var(--gold) !important;
+    padding: 8px 20px !important;
+    color: var(--gold) !important;
+    opacity: 1 !important;
+    transition: 0.4s;
+}
+
+.nav-login-btn:hover {
+    background: var(--gold);
+    color: #000 !important;
+}
+
+/* --- Grand Footer Styling --- */
+footer {
+    background: #050505;
+    padding: 100px 0 40px;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    margin-top: 100px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-col h4 {
+    font-family: 'Cinzel Decorative';
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+}
+
+.footer-col a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond';
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    opacity: 1;
+    color: var(--gold);
+    padding-left: 5px;
+}
+
+.brand-col p {
+    font-family: 'Cormorant Garamond';
+    font-style: italic;
+    opacity: 0.6;
+    margin: 20px 0;
+    font-size: 1.2rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    opacity: 0.4;
+}
+
+/* Mobile Footer */
+@media (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 600px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
