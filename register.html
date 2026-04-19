@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join the Universe • NeelVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/X-icon" href="favicon.ico">
+    <style>
+        .auth-wrapper {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('hero-neel.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="hero-overlay" style="opacity: 0.8;"></div>
+
+    <div class="auth-wrapper">
+        <div class="auth-card reveal" style="max-width: 450px;">
+            <a href="index.html" class="logo" style="font-size: 1.2rem; margin-bottom: 20px; display: block; text-align: center;">NEELVERSE</a>
+            <h2 class="auth-title">Join the <span>Elite</span></h2>
+            
+            <form class="auth-form">
+                <div class="input-group">
+                    <label>FULL NAME</label>
+                    <input type="text" placeholder="your name" required>
+                </div>
+                <div class="input-group">
+                    <label>EMAIL ADDRESS</label>
+                    <input type="email" placeholder="email@universe.com" required>
+                </div>
+                <div class="input-group">
+                    <label>CHOOSE KEY</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="gold-btn" style="width: 100%; border-radius: 0;">INITIATE REGISTRATION</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already an Initiate? <a href="login.html">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

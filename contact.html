@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Inquiry • NeelVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/X-icon" href="favicon.ico">
+</head>
+<body class="auth-page"> <!-- Using a helper class for layout -->
+    <div class="grain"></div>
+    <div class="lightning-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo">NEELVERSE</a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="work.html">Portfolio</a>
+            <a href="process.html">Process</a>
+            <a href="journal.html">Journal</a>
+            <a href="vault.html">Vault</a>
+            <a href="contact.html" style="color:var(--gold); opacity:1;">Contact</a>
+            <a href="login.html" class="nav-login">Login</a>
+        </div>
+    </nav>
+
+    <div class="contact-wrapper">
+        <div class="contact-glass-card reveal">
+            <div class="contact-header">
+                <p class="subtitle">CORRESPONDENCE</p>
+                <h1 class="auth-title">Private <span>Inquiry</span></h1>
+                <p class="contact-desc">Reach out for cinematic collaborations, digital architecture, or fine-art photography commissions.</p>
+            </div>
+
+            <!-- Formspree Integration -->
+            <form action="https://formspree.io/f/xwvvvzzk" method="POST" class="imperial-form">
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>YOUR IDENTITY</label>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>RETURN ADDRESS</label>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>SUBJECT OF INTEREST</label>
+                    <select name="subject">
+                        <option value="cinematography">Cinematography</option>
+                        <option value="web-design">Digital Architecture</option>
+                        <option value="photography">Photography</option>
+                        <option value="other">Other Inquiries</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>THE MESSAGE</label>
+                    <textarea name="message" rows="5" placeholder="Tell me about your vision..." required></textarea>
+                </div>
+
+                <button type="submit" class="gold-btn" style="width: 100%; cursor: pointer;">SEND MESSAGE 🚀</button>
+            </form>
+
+            <div class="contact-socials">
+                <a href="#">INSTAGRAM</a>
+                <a href="#">TWITTER</a>
+                <a href="#">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+      <footer>
+      <div class="footer-grid container">
+        <!-- Brand Info -->
+        <div class="footer-col brand-col">
+            <div class="logo">NEELVERSE</div>
+            <p>Digital Aristocracy & Cinematic Excellence. Established MMXXVI.</p>
+            <div class="social-icons">
+                <a href="#">IG</a> <a href="#">TW</a> <a href="#">LI</a>
+            </div>
+        </div>
+
+        <!-- Column 1: Creation -->
+        <div class="footer-col">
+            <h4>THE UNIVERSE</h4>
+            <a href="work.html">Selected Works</a>
+            <a href="services.html">Imperial Offerings</a>
+            <a href="process.html">The Methodology</a>
+            <a href="vault.html">The Vault</a>
+        </div>
+
+        <!-- Column 2: Philosophy -->
+        <div class="footer-col">
+            <h4>THE LEGACY</h4>
+            <a href="about.html">The Author</a>
+            <a href="manifesto.html">Manifesto</a>
+            <a href="acclaim.html">Client Acclaim</a>
+            <a href="journal.html">Field Notes</a>
+        </div>
+
+        <!-- Column 3: Access -->
+        <div class="footer-col">
+            <h4>IDENTIFICATION</h4>
+            <a href="contact.html">Private Inquiry</a>
+            <a href="login.html">Access Realm</a>
+            <a href="register.html">Join the Elite</a>
+        </div>
+      </div>
+     <div class="footer-bottom">
+        &copy; 2026 NEELVERSE — CURATED BY NEEL. ALL RIGHTS RESERVED.
+     </div>
+    </footer>
+
+    <!-- GSAP & Main Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

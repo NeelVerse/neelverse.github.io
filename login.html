@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access the Realm • NeelVerse</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific page layout */
+        .auth-wrapper {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('hero-neel.jpg'); /* Your photo */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+    </style>
+    <link rel="icon" type="image/X-icon" href="favicon.ico">
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="hero-overlay" style="opacity: 0.8;"></div>
+
+    <div class="auth-wrapper">
+        <div class="auth-card reveal">
+            <a href="index.html" class="logo" style="font-size: 1.2rem; margin-bottom: 20px; display: block; text-align: center;">NEELVERSE</a>
+            <h2 class="auth-title">Identify <span>Yourself</span></h2>
+            
+            <form class="auth-form">
+                <div class="input-group">
+                    <label>IDENTITY (EMAIL)</label>
+                    <input type="email" placeholder="enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label>KEY (PASSWORD)</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="gold-btn" style="width: 100%; border-radius: 0;">GRANT ACCESS</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>New to the Universe? <a href="register.html">Create a Legacy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
